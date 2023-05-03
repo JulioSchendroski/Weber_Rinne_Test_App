@@ -10,11 +10,32 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Vibration Demo',
-      home: Column(
-        children: [
-          VibrationSliderScreenTimer(),
-          VibrationSliderScreenAmplitude(),
-        ],
+      home: MyHomePage(),
+    );
+  }
+}
+
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Vibration App'),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: VibrationSliderScreenTimer(),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: VibrationSliderScreenAmplitudeColumn(),
+            ),
+          ],
+        ),
       ),
     );
   }

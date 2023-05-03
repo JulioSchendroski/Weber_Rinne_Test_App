@@ -12,29 +12,24 @@ class _VibrationSliderScreenStateTimer extends State<VibrationSliderScreenTimer>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Vibration Slider'),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('Vibration duration: ${_time.toInt()} ms'),
-          Slider(
-            value: _time,
-            min: 0.0,
-            max: 255.0,
-            divisions: 255,
-            onChanged: (value) {
-              setState(() {
-                _time = value;
-              });
-            },
-          ),
-          SizedBox(height: 20),
-          VibrationButtonTimer(time: _time),
-        ],
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text('Vibration timer: ${_time.toInt()} milliseconds'),
+        Slider(
+          value: _time,
+          min: 0.0,
+          max: 255.0,
+          divisions: 255,
+          onChanged: (value) {
+            setState(() {
+              _time = value;
+            });
+          },
+        ),
+        SizedBox(height: 20),
+        VibrationButtonTimer(time: _time),
+      ],
     );
   }
 }

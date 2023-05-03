@@ -2,42 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:vibration/vibration.dart';
 
 
-class VibrationSliderScreenAmplitude extends StatefulWidget {
+class VibrationSliderScreenAmplitudeColumn extends StatefulWidget {
   @override
-  _VibrationSliderScreenStateAmplitude createState() => _VibrationSliderScreenStateAmplitude();
+  _VibrationSliderScreenAmplitudeColumnState createState() => _VibrationSliderScreenAmplitudeColumnState();
 }
 
-class _VibrationSliderScreenStateAmplitude extends State<VibrationSliderScreenAmplitude> {
+class _VibrationSliderScreenAmplitudeColumnState extends State<VibrationSliderScreenAmplitudeColumn> {
   double _hertz = 0.0;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Vibration Slider'),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('Vibration amplitude: ${_hertz.toInt()} hertz'),
-          Slider(
-            value: _hertz,
-            min: 0.0,
-            max: 255.0,
-            divisions: 255,
-            onChanged: (value) {
-              setState(() {
-                _hertz = value;
-              });
-            },
-          ),
-          SizedBox(height: 20),
-          VibrationButtonAmplitude(hertz: _hertz),
-        ],
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text('Vibration amplitude: ${_hertz.toInt()} hertz'),
+        Slider(
+          value: _hertz,
+          min: 0.0,
+          max: 255.0,
+          divisions: 255,
+          onChanged: (value) {
+            setState(() {
+              _hertz = value;
+            });
+          },
+        ),
+        SizedBox(height: 20),
+        VibrationButtonAmplitude(hertz: _hertz),
+      ],
     );
   }
 }
+
 
 class VibrationButtonAmplitude extends StatelessWidget {
   final double hertz;
